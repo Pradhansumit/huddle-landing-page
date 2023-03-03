@@ -1,0 +1,178 @@
+//colors
+
+$violets: hsl(257, 40%, 49%);
+$magenta: hsl(300, 69%, 71%);
+
+//typography
+
+$opensans: "Open Sans", sans-serif;
+$poppins: "Poppins", sans-serif;
+$bold: 600;
+$regular: 400;
+
+//mixins
+
+@mixin Flex($dir, $jc) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $jc;
+}
+
+//globals
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  @include Flex(column, center);
+  align-items: center;
+  min-height: 100vh;
+  background: $violets;
+  background-image: url(../images/bg-mobile.svg);
+  background-repeat: no-repeat;
+}
+
+.container {
+  padding: 2rem;
+}
+
+.huddle {
+  font: {
+    family: $poppins;
+    weight: $bold;
+  }
+  color: white;
+
+  .fa-comment-dots {
+    margin-right: 5px;
+  }
+}
+
+.img-box {
+  margin: 2rem 0;
+  width: 100%;
+  height: auto;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.heading {
+  text-align: center;
+  color: white;
+  font: {
+    family: $poppins;
+  }
+  margin-bottom: 1.3rem;
+}
+
+.desc {
+  text-align: center;
+  color: white;
+  font: {
+    family: $opensans;
+    weight: $regular;
+    size: 0.9rem;
+  }
+  margin-bottom: 1.3rem;
+  line-height: 1.6;
+  padding: 0 0.8rem;
+}
+
+.button {
+  display: block;
+  margin: 0 auto;
+  width: 60%;
+  padding: 0.7rem;
+  border-radius: 30px;
+  outline: none;
+  border: none;
+  box-shadow: 0 5px 7px rgba(0, 0, 0, 0.3);
+  color: $violets;
+  font-family: $poppins;
+  background: white;
+  margin-bottom: 2.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    background: #e980e7;
+    color: white;
+  }
+}
+
+.social-container {
+  display: flex;
+  justify-content: end;
+  @include Flex(row, center);
+  align-items: center;
+  i {
+    @include Flex(row, center);
+    align-items: center;
+    height: 35px;
+    width: 35px;
+    color: white;
+    border: solid 1px white;
+    border-radius: 50%;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+
+    &:hover {
+      color: #fd51c3;
+      border-color: #fd51c3;
+    }
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .container {
+    padding: 0;
+  }
+  .content-container {
+    @include Flex(row, space-evenly);
+  }
+
+  .img-box {
+    margin-right: 3rem;
+    width: 70%;
+  }
+
+  .text-container {
+    width: 471px;
+    padding-top: 5rem;
+    .heading,
+    .desc {
+      text-align: left;
+    }
+
+    .heading {
+      font-size: 2.2rem;
+    }
+
+    .desc {
+      padding: 0;
+    }
+  }
+  .button {
+    margin: 0;
+    width: 30%;
+  }
+
+  .social-container {
+    justify-content: flex-end;
+  }
+}
